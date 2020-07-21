@@ -1,6 +1,18 @@
-
 <form action="/posts/create" method="POST" >
     <div class="mx-5">
+        <% if @post.present? %>
+          <% @post.car.errors.each do |attr , msg| %>
+            <div class="alert alert-danger" role="alert">
+                <%= attr %> <%= msg %>
+            </div>
+          <% end %>
+          <% @post.errors.each do |attr , msg| %>
+            <div class="alert alert-danger" role="alert">
+                <%= attr %> <%= msg %>
+            </div>
+          <% end %>
+        <% end %> 
+
         <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Price</span>

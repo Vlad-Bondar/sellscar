@@ -7,7 +7,7 @@
         <div class="col-lg-8">
 
           <!-- Title -->
-          <h1 class="mt-2 mb-0"><%=@car.car_name%></h1>
+          <h1 class="mt-2 mb-0"><%=@post.car.car_name%></h1>
           <h5 class="mb-4 mt-0"><%=@post.small_description%></h5>
 
           <hr>
@@ -28,31 +28,31 @@
                       <th class="table-active">Seller</th>
                       <td>Ячейка 2</td>
                       <th class="table-active">Drivetrain</th>
-                      <td><%=@car.drivetrain%></td>
+                      <td><%=@post.car.drivetrain%></td>
                   </tr>
                   <tr>
                       <th class="table-active">Location</th>
-                      <td><%=@car.location%></td>
+                      <td><%=@post.car.location%></td>
                       <th class="table-active">Transmition</th>
-                      <td><%=@car.transmition%></td>
+                      <td><%=@post.car.transmition%></td>
                   </tr>
                   <tr>
                       <th class="table-active">VIN</th>
-                      <td><%=@car.vin%></td>
+                      <td><%=@post.car.vin%></td>
                       <th class="table-active">Exteriror Collor</th>
-                      <td><%=@car.exterior_collor%></td>
+                      <td><%=@post.car.exterior_collor%></td>
                   </tr>
                   <tr>
                       <th class="table-active">Milleage </th>
-                      <td><%=@car.millage%></td>
+                      <td><%=@post.car.millage%></td>
                       <th class="table-active">Interior Color</th>
-                      <td><%=@car.interior_collor%></td>
+                      <td><%=@post.car.interior_collor%></td>
                   </tr>
                   <tr>
                       <th class="table-active">Body Style </th>
-                      <td><%=@car.body_style%></td>
+                      <td><%=@post.car.body_style%></td>
                       <th class="table-active">Engine</th>
-                      <td><%=@car.engine%></td>
+                      <td><%=@post.car.engine%></td>
                   </tr>
                   </tbody>
           </table>

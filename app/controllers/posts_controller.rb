@@ -15,7 +15,6 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id])
-
     end
 
     def create 
@@ -24,10 +23,12 @@ class PostsController < ApplicationController
 
         @post.car = @car
 
-        @post.save
-        @car.save
-
+        if @post.save &&  @car.save
         redirect_to '/posts/' + @post.id.to_s
+       else 
+        #byebug
+        render '/posts/new'
+       end
     end
 
     def update
@@ -36,8 +37,12 @@ class PostsController < ApplicationController
 
         @post.update(post_params)
         @post.car.update(car_params)
-
-        redirect_to '/posts/' + @post.id.to_s
+        
+        if @post.update(post_params) &&  @post.car.update(car_params)
+            redirect_to '/posts/' + @post.id.to_s
+        else
+            render 'edit'
+        end
     end
 
     private 
