@@ -1,0 +1,86 @@
+<form action="/posts/update/<%=@post.id%>" method="POST" >
+    <div class="mx-5">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Price</span>
+            </div>
+            <input name="car[price]" value="<%= @post.car.price%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Car Name</span>
+            </div>
+            <input name=car[car_name] value="<%= @post.car.car_name%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Drivetrain</span>
+            </div>
+            <input name=car[drivetrain] value="<%= @post.car.drivetrain%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Location</span>
+            </div>
+            <input name=car[location] value="<%= @post.car.location%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Transmition</span>
+            </div>
+            <input name=car[transmition] value="<%= @post.car.transmition%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">VIN</span>
+            </div>
+            <input name=car[vin] value="<%= @post.car.vin%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Exterior collor</span>
+            </div>
+            <input name=car[exterior_collor] value="<%= @car.exterior_collor%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Interrior collor</span>
+            </div>
+            <input name=car[interior_collor] value="<%= @post.car.interior_collor%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Millage</span>
+            </div>
+            <input name=car[millage] value="<%= @post.car.millage%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Body style</span>
+            </div>
+            <input name=car[body_style] value="<%= @post.car.body_style%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Engine</span>
+            </div>
+            <input name=car[engine] value="<%= @post.car.engine%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Short description</span>
+            </div>
+            <input name=post[small_description] value="<%= @post.small_description%>" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-gro1up">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Description</span>
+            </div>
+            <textarea name=post[big_description]  class="form-control" aria-label="With textarea"><%= @post.big_description%></textarea>
+        </div>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-outline-secondary">Edit</button>
+        </div>
+    </div>
+</form>
