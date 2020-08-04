@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     end 
 
     def new
+        @post = Post.new
+        @car = Car.new
+
+        @post.car=@car
     end
 
     def show 
@@ -23,10 +27,11 @@ class PostsController < ApplicationController
 
         @post.car = @car
 
+        #byebug
+
         if @post.save &&  @car.save
         redirect_to '/posts/' + @post.id.to_s
        else 
-        #byebug
         render '/posts/new'
        end
     end
@@ -34,9 +39,12 @@ class PostsController < ApplicationController
     def update
         @post = Post.find(params[:id])
         @post.car = Car.find(params[:id])
-
+        
         @post.update(post_params)
         @post.car.update(car_params)
+        
+        
+        #byebug
         
         if @post.update(post_params) &&  @post.car.update(car_params)
             redirect_to '/posts/' + @post.id.to_s
@@ -48,7 +56,7 @@ class PostsController < ApplicationController
     private 
     
     def post_params
-        params.require(:post).permit(:small_description,:big_description)
+        params.require(:post).permit(:small_description,:big_description, :image)
     end
 
     def car_params
