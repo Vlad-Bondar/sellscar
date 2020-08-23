@@ -1,4 +1,20 @@
 <!-- Page Content -->
+<div class="mb-2">
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link " href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="#" >Disabled</a>
+    </li>
+  </ul>
+</div>
   <div class="container mt-6">
 
     <div class="row mt-6">
@@ -9,14 +25,14 @@
 
         <div class="row">
           <%@posts.each do |post|%>
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4 rounded">
               <div class="card h-100 my-0">
-                <a href="/posts/<%= post.id%>"><img class="card-img-top my-0" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body my-0">
-                  <h4 class="card-title my-0">
+                <a href="/posts/<%= post.id%>"><%= image_tag(post.image.index_thumb.url, alt: 'Image' ,class:"rounded-top" ) if post.image? %></a>
+                <div class="card-body my-0 ">
+                  <h4 class="card-title my-0 ">
                     <a href="/posts/<%= post.id%>"> <%=post.car.car_name%>  </a>
                   </h4>
-                  <h5 calss="my-0"><%=post.car.price.to_i%>$</h5>
+                  <h5 class="my-0"><%=post.car.price.to_i%>$</h5>
                   <p class="card-text my-0"><%=post.small_description%></p>
                 </div>
                 <div class="card-footer">
@@ -38,13 +54,6 @@
   </div>
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Crated by Vladik</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
