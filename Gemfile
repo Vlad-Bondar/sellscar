@@ -7,6 +7,10 @@ ruby '2.7.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as db
 gem 'pg', '~>1.2'
+# Use to registration users
+gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -37,6 +41,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'letter_opener'
 end
 
 group :development do
