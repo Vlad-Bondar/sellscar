@@ -14,9 +14,10 @@
  *= require_self
  */
 
- footer {
+/* footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%; /* Ширина слоя */
+    width: 100%;  
  }
+ */

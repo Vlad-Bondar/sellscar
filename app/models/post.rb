@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   has_one :car
   has_many :comment
-
+  belongs_to :user
   mount_uploader :image, ImageUploader
 
   validates :small_description, presence: :true, length: { maximum: 200 }

@@ -2,9 +2,9 @@ module SortPosts
 
   def sort_by_params(params,posts)
     case params
-    when "newest"  
+    when "oldest"  
       sort_by_date_created(posts)
-    when "oldest" 
+    when "newest" 
       sort_by_date_created_reverse(posts)
     when "expencive"  
       sort_by_price_max_to_min(posts)

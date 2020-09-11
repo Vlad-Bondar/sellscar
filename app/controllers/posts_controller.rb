@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   
   include SortPosts
 
-  before_action :authenticate_member!, except: [:index , :show]
+  before_action :authenticate_user!, except: [:index , :show]
 
   def index 
     @posts = sort_by_params(params[:sort] , Post.all)
@@ -23,7 +23,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.comments_for_post(@post.id)
     @replies = Comment.replies_for_post(@post.id)
-    # byebug
   end
 
   def edit
@@ -31,12 +30,16 @@ class PostsController < ApplicationController
   end
 
   def create
+    
     @post = Post.new(post_params)
     @car = Car.new(car_params)
 
     @post.car = @car
-
     # byebug
+
+    @post.user_id = current_user.id
+
+    
 
     if @post.save && @car.save
       redirect_to '/posts/' + @post.id.to_s
@@ -59,6 +62,10 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def user_cars
+    @posts = current_user.posts
   end
 
   private
