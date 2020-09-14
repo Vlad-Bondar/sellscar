@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
+
     @post = Post.find(params[:id])
     @comment = Comment.comments_for_post(@post.id)
     @replies = Comment.replies_for_post(@post.id)
@@ -65,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def user_cars
-    @posts = current_user.posts
+    @posts = sort_by_params(params[:sort] , current_user.posts)
   end
 
   private
