@@ -18,7 +18,7 @@ gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Use to insert image into posts
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 # Use to resize image
 gem 'mini_magick'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
