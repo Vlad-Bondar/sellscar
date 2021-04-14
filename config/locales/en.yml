@@ -30,4 +30,35 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  devise:
+    leave_blank: "leave blank if you don't want to change it"
+    need_current_password: "we need your current password to confirm your changes"
+    cancel_account: "Cancel my account"
+    characters_minimum: "characters minimum"
+    forgot_password: "Forgot password?"
+    receive_confirmation: "Didn't receive instructions to confirm?"
+    receive_unlock: "Didn't receive unlock instructions?"
+    resend_instruction: "Resend instructions"
+    resend_unlock_instructions: "Resend unlock instructions"
+    resend_confirmation_instructions: "Resend confirmation instructions"
+  nav_bar:
+    all_posts: 'All posts'
+    your_posts: 'Your posts'
+  common:
+    back: 'Back'
+    edit: 'Edit'
+    delete: 'Delete'
+    newest_posts: 'Newest posts'
+    oldest_posts: 'Oldest posts'
+    most_expencive: 'Most expencive posts'
+    the_cheapest: 'The cheapest posts'
+    search: 'Search'
+    confirm: 'Are you sure?'
+    update: "Update"
+    sign_out: "Sign Out"
+    sign_in: "Sign In"
+    sign_up: "Sign Up"
+    edit_profile: "Edit profile"
+  posts:
+    form:
+      submit: '%{action} post'

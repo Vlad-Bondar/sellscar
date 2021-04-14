@@ -1,0 +1,33 @@
+ru:
+  nav_bar:
+    all_posts: 'Все объявления'
+    your_posts: 'Ваши объявления'
+  common:
+    back: 'Назад'
+    edit: 'Редактировать'
+    delete: 'Удалить'
+    newest_posts: 'Новые объявления'
+    oldest_posts: 'Старые объявления'
+    most_expencive: 'Самые дорогие'
+    the_cheapest: 'Самые дешёвые'
+    search: 'Поиск'
+    confirm: 'Вы уверены?'
+    update: "Обновить"
+    sign_out: "Выйти"
+    sign_in: "Войти"
+    sign_up: "Регистрация"
+    edit_profile: "Изменить профиль"
+  posts:
+    form:
+      submit: '%{action} объявление'
+  devise:
+    leave_blank: 'оставьте поле пустым если не хотите изменять его'
+    need_current_password: 'Введите текущий пароль для подтверждения изменений'
+    cancel_account: 'Удалить аккаунт'
+    characters_minimum: 'символов минимум'
+    forgot_password: 'Забыли пароль?'
+    receive_confirmation: 'Не получил инструкций для подтверждения?'
+    receive_unlock: 'Не получили инструкции по разблокировке?'
+    resend_instruction: 'Отправить инструкции повторно'
+    resend_unlock_instructions: 'Выслать инструкцию разблокировки повторно'
+    resend_confirmation_instructions: 'Выслать инструкцию подтверждени повторно'

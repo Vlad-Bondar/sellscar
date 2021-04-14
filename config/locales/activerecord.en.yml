@@ -1,0 +1,29 @@
+ru:
+  activerecord:
+    models:
+      post: 'Post'
+      car: 'Car'
+      user: 'User'
+    attributes:
+      post:
+        big_description: 'Desription'
+        small_description: 'Summary'
+      car:
+        drivetrain: 'Drivetrain'
+        location: 'Location'
+        transmition: 'Transmission'
+        vin: 'Vin'
+        exterior_collor: 'Exterior collor:'
+        interior_collor: 'Interior collor'
+        body_style: 'Body style'
+        engine: 'Engine'
+        price: 'Price'
+        millage: 'Millage'
+        car_name: 'Car name'
+      user:
+        user_name: 'User name'
+        email: 'Email'
+        password: 'Password'
+        current_password: 'Current password'
+        password_confirmation: 'Password confirmation'
+        remember_me: 'Remember me?'

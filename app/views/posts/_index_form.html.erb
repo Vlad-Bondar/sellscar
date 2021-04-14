@@ -2,43 +2,38 @@
 <div class="mb-2">
   <ul class="nav nav-tabs justify-content-center">
     <li class="nav-item">
-      <a class="nav-link " href="?sort=newest">Newest posts</a>
+      <a class="nav-link " href="?sort=newest"> <%= t('common.newest_posts') %> </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="?sort=oldest">Oldest posts</a>
+      <a class="nav-link" href="?sort=oldest"> <%= t('common.oldest_posts') %> </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="?sort=expencive">Most expencive</a>
+      <a class="nav-link" href="?sort=expencive"> <%= t('common.most_expencive') %> </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link " href="?sort=cheapest" >The cheapest</a>
+      <a class="nav-link " href="?sort=cheapest" > <%= t('common.the_cheapest') %> </a>
     </li>
   </ul>
 </div>
   <div class="container mt-6">
-
     <div class="row mt-6">
-
-      <!-- /.col-lg-3 -->
-
       <div class="col-lg-9">
-
         <div class="row">
           <%@posts.each do |post|%>
             <div class="col-lg-4 col-md-6 mb-4 rounded">
               <div class="card h-100 my-0">
-                <a href="/posts/<%= post.id%>"><%= image_tag(post.image.index_thumb.url, alt: 'Image' ,class:"rounded-top" ) if post.image? %></a>
+                <a href="/posts/<%= post.id%>"><%= image_tag(post.car.images.first.show_thumb.url, alt: 'Image' ,class:"rounded-top" ) if post.car.images? %></a>
                 <div class="card-body my-0 ">
                   <h4 class="card-title my-0 ">
-                    <a href="/posts/<%= post.id%>"> <%=post.car.car_name%>  </a>
+                    <a href="/posts/<%= post.id%>"> <%= post.car.brand.title%> </a>
                   </h4>
                   <h5 class="my-0"><%= post.car.price.to_i%>$</h5>
                   <p class="card-text my-0"><%=post.small_description%></p>
                 </div>
                 <% if path == "/posts/user_cars" %>
                   <div class="btn-group btn-group-sm mx-2 mb-2 " role="group">
-                    <a href="/posts/edit/<%= post.id%>" class="btn btn-secondary bg-light text-muted border border-white">Edit</a>
-                    <a href="#" class="btn btn-secondary bg-light text-muted border border-white">Delete</a>
+                    <a href="<%= edit_post_path(post.id)%>" class="btn btn-secondary bg-light text-muted border border-white"> <%= t('common.edit') %> </a>
+                    <a href="#" class="btn btn-secondary bg-light text-muted border border-white"> <%= t('common.delete') %> </a>
                   </div>
                 <%end%>
                 <div class="card-footer">
@@ -46,25 +41,14 @@
                 </div>
               </div>
             </div>
-          <%end%>
-          
+          <%end%>      
         </div>
-        <!-- /.row -->
-
       </div>
-      <!-- /.col-lg-9 -->
-
     </div>
-    <!-- /.row -->
-
   </div>
-  <!-- /.container -->
-
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>

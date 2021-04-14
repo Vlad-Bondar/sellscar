@@ -1,118 +1,87 @@
  <form action="/posts/show" method="get" >
   <div class="container">
 
-      <div class="row">
+    <div class="row">
 
         <!-- Post Content Column -->
-        <div class="col-lg-8">
+      <div class="col-lg-8">
 
-          <!-- Title -->
-          <h1 class="mt-2 mb-0"><%=@post.car.car_name%></h1>
-          <h5 class="mb-4 mt-0"><%=@post.small_description%></h5>
+        <!-- Title -->
+        <h1 class="mt-2 mb-0"><%=@post.car.brand.title%></h1>
+        <h5 class="mb-4 mt-0"><%=@post.small_description%></h5>
 
-          <hr>
+        <hr>
 
-          <!-- Date/Time -->
-          <p>Posted on <%=@post.created_at%></p>
 
-     
-          <%= image_tag(@post.image.show_thumb.url, alt: 'Image') if @post.image? %>
-          <!-- Preview Image -->
-          
-          
-          
+        <p>Posted on <%=@post.created_at%></p>
 
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <ol class="carousel-indicators">
+            <% @post.car.images.each_with_index do |image, index| %>
+              <li data-target='#MyCarousel' data-slide-to="#{index}" class="#{'active' if index == 0}"></li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner">
+            <% @post.car.images.each_with_index do |image, index| %>
+              <div class="item <%= index == 0 ? 'active' : '' %>">
+                <%= image_tag image.show_thumb.url, class: "d-block w-100" %>
+              </div>
+            <%end%>
+          </div>
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+
+        
           <table class="table table-bordered mt-4">
-              <tbody>
-                  <tr>
-                      <th class="table-active">Seller</th>
-                      <td><%=@post.user_id%></td>
-                      <th class="table-active">Drivetrain</th>
-                      <td><%=@post.car.drivetrain%></td>
-                  </tr>
-                  <tr>
-                      <th class="table-active">Location</th>
-                      <td><%=@post.car.location%></td>
-                      <th class="table-active">Transmition</th>
-                      <td><%=@post.car.transmition%></td>
-                  </tr>
-                  <tr>
-                      <th class="table-active">VIN</th>
-                      <td><%=@post.car.vin%></td>
-                      <th class="table-active">Exteriror Collor</th>
-                      <td><%=@post.car.exterior_collor%></td>
-                  </tr>
-                  <tr>
-                      <th class="table-active">Milleage </th>
-                      <td><%=@post.car.millage%></td>
-                      <th class="table-active">Interior Color</th>
-                      <td><%=@post.car.interior_collor%></td>
-                  </tr>
-                  <tr>
-                      <th class="table-active">Body Style </th>
-                      <td><%=@post.car.body_style%></td>
-                      <th class="table-active">Engine</th>
-                      <td><%=@post.car.engine%></td>
-                  </tr>
-                  </tbody>
+            <tbody>
+              <tr>
+                <th class="table-active"> <%=t('activerecord.attributes.user.user_name')%></th>
+                <td><%=@post.user_id%></td>
+                <th class="table-active"> <%=t('activerecord.attributes.car.drivetrain')%> </th>
+                <td><%=@post.car.drivetrain%></td>
+              </tr>
+              <tr>
+                <th class="table-active"> <%=t('activerecord.attributes.car.location')%> </th>
+                <td><%=@post.car.location%></td>
+                <th class="table-active"> <%=t('activerecord.attributes.car.transmition')%> </th>
+                <td><%=@post.car.transmition%></td>
+              </tr>
+              <tr>
+                <th class="table-active"><%=t('activerecord.attributes.car.vin')%></th>
+                <td><%=@post.car.vin%></td>
+                <th class="table-active"><%=t('activerecord.attributes.car.exterior_collor')%> </th>
+                <td><%=@post.car.exterior_collor%></td>
+              </tr>
+              <tr>
+                <th class="table-active"><%=t('activerecord.attributes.car.millage')%> </th>
+                <td><%=@post.car.millage%></td>
+                <th class="table-active"><%=t('activerecord.attributes.car.interior_collor')%> </th>
+                <td><%=@post.car.interior_collor%></td>
+              </tr>
+              <tr>
+                <th class="table-active"><%=t('activerecord.attributes.car.body_style')%>  </th>
+                <td><%=@post.car.body_style%></td>
+                <th class="table-active"><%=t('activerecord.attributes.car.engine')%></th>
+                <td><%=@post.car.engine%></td>
+              </tr>
+            </tbody>
           </table>
-
           <hr>
-          <h2> Description </h2>
+          <h3>11</h3>
+          <%= rating_for @post, 'rating' %>
+          <h2> <%=t('activerecord.attributes.post.big_description')%> </h2>
           <!-- Post Content -->
           <p class="lead"><%=@post.big_description%></p>
-
-
-          <blockquote class="blockquote">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in
-              <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-          <hr>
-
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
-            <div class="card-body">
-              <form>
-                <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
-          </div>
-
-
+</form>
           <!-- Comment with nested comments -->
-          <% @comment.each do |comment| %>
-            <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                <%= comment.body %>
-
-                <% if @replies.key?(comment.id) %>
-                  <% @replies[comment.id].each do |reply| %>
-                    <div class="media mt-4">
-                      <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                      <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
-                        <%= reply.body  %> 
-                      </div>
-                    </div>
-                  <%end%>
-                <%end%>
-
-              </div>
-            </div>
-          <%end%>
+        <%= react_component("CommentsApp", { comments: @comments, replies: @replies, csrf_token: form_authenticity_token, post_id: @post.id }) %>
 
         </div>
 
@@ -182,7 +151,7 @@
 
     </div>
     <!-- /.container -->
-</form>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

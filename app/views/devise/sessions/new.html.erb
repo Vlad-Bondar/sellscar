@@ -1,6 +1,6 @@
 <div class="container"> 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <h2 >Sign in</h2>
+    <h2 ><%= t('common.sign_in') %></h2>
     <div class="form-group">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-control rounded-pill"%>
@@ -19,7 +19,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in" , class: "btn btn-outline-success"%>
+      <%= f.submit t('common.sign_in') , class: "btn btn-outline-success"%>
     </div>
   <% end %>
 

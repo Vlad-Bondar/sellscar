@@ -1,0 +1,30 @@
+ru:
+  activerecord:
+    models:
+      post: 'Объявление'
+      car: 'Машина'
+      user: 'Пользователь'
+    attributes:
+      post:
+        big_description: 'Описание'
+        small_description: 'Краткое описание'
+      car:
+        drivetrain: 'Тип привода'
+        location: 'Место нахождения'
+        transmition: 'КПП'
+        vin: 'Вин-код???'
+        exterior_collor: 'Цвет кузова'
+        interior_collor: 'Цвет салона'
+        body_style: 'Тип кузова'
+        engine: 'Двигатель'
+        price: 'Цена'
+        millage: 'Пробег'
+        car_name: 'Название'
+      user:
+        user_name: 'Имя пользователя'
+        email: 'Электронная почта'
+        encrypted_password: 'Пароль'
+        password: 'Пароль'
+        current_password: 'Текущий проль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня?'

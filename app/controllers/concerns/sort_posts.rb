@@ -1,5 +1,4 @@
 module SortPosts
-
   def sort_by_params(params,posts)
     case params
     when "oldest"  

@@ -11,6 +11,7 @@ gem 'pg', '~>1.2'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'ratyrate'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -27,6 +28,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use to refacor codestyle
 gem 'rubocop', '~> 0.89.1', require: false
+gem 'pry'
+gem 'react-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

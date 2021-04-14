@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'posts/index'
+  post '/rate' => 'rater#create', :as => 'rate'
+  # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  devise_for :users, skip: :omniauth_callbacks
+  # get 'posts/index'
+  # get 'posts/new',         to: 'posts#new'
+  # get 'posts/edit/:id',    to: 'posts#edit'
+  # get 'posts/:id',         to: 'posts#show'
+  # post 'posts/create',     to: 'posts#create'
+  # post 'posts/update/:id', to: 'posts#update'
+  
+  post 'comments/create/:post_id', to: 'comments#create' , constraints: {post_id: /\d+/}
+  post 'comments/create/:post_id/replise/:parent_id', to: 'comments#create' , constraints: {post_id: /\d+/}
+  
   get 'posts/user_cars',   to: 'posts#user_cars'
-  get 'posts/new',         to: 'posts#new'
-  get 'posts/edit/:id',    to: 'posts#edit'
-  get 'posts/:id',         to: 'posts#show'
-  post 'posts/create',     to: 'posts#create'
-  post 'posts/update/:id', to: 'posts#update'
-  # resources :posts
+  resources :posts do
+    resources :images, only: [:create , :destroy]
+  end
   root to: 'posts#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

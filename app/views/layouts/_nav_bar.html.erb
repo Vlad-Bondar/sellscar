@@ -1,51 +1,58 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-    <a class="navbar-brand" href="#">SellsCar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="#">SellsCar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/posts/index">All cars <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/posts/user_cars">Your Cars</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#">About us</a>
-        </li>
-      </ul>
-      
-      <form class="form-inline my-2 my-lg-0">
-      
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <div>
-          <button class="btn btn-outline-success my-2 mr-4 my-sm-0" type="submit" left=0.3en>Search</button>
-          <%if user_signed_in?%>
-            <div class="btn-group">
-              <button class="btn btn-outline-dark  dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= current_user.user_name%>
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Edit profile</a>
-                <a class="dropdown-item" href="#">Sign Out</a> 
-              </div>
-            </div>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete , class: "btn btn-outline-dark my-2 my-sm-0"%>
-          <%else%>
-            <a class="btn btn-outline-dark my-2 my-sm-0" role="button" href=<%= new_user_session_path  %>> Sign In </a>
-            <a class="btn btn-outline-dark my-2 my-sm-0" role="button" href=<%= new_user_registration_path %>> Sign Up </a>
-          <%end%>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href=<%=posts_path%>> <%= t('nav_bar.all_posts')%> <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/user_cars"><%= t('nav_bar.your_posts')%></a>
+      </li>
+      <li class="nav-item<%= " active" if I18n.locale == :ru %>" >
+        <%= link_to("Rus", url_for( locale: 'ru' ), class: "nav-link") %>
+      </li>
+      <li class="nav-item<%= " active" if I18n.locale == :en %>" >
+        <%= link_to("Eng", url_for( locale: 'en' ), class: "nav-link") %>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
         </div>
-      </form>
-  </nav>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">About us</a>
+      </li>
+    </ul>
+    
+    <form class="form-inline my-2 my-lg-0">
+    
+      <input class="form-control mr-sm-2" type="search" placeholder=<%= t('common.search') %> aria-label="Search">
+      <div>
+        <button class="btn btn-outline-success my-2 mr-4 my-sm-0" type="submit" left=0.3en><%= t('common.search') %></button>
+        <%if user_signed_in?%>
+          <div class="btn-group">
+            <button class="btn btn-outline-dark  dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.user_name%>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to t('common.edit_profile'), edit_user_registration_path,  class: "dropdown-item"%>
+              <%= link_to t('common.sign_out'), destroy_user_session_path, method: :delete , class: "dropdown-item"%>
+            </div>
+          </div>
+          
+        <%else%>
+          <a class="btn btn-outline-dark my-2 my-sm-0" role="button" href=<%= new_user_session_path  %>> <%= t('common.sign_in') %> </a>
+          <a class="btn btn-outline-dark my-2 my-sm-0" role="button" href=<%= new_user_registration_path %>> <%= t('common.sign_up') %> </a>
+        <%end%>
+      </div>
+    </form>
+  </div>
+</nav>
