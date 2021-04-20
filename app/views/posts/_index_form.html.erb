@@ -37,7 +37,11 @@
                   </div>
                 <%end%>
                 <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  <div>
+                    <%= link_to toggle_favorite_post_path(post), remote: true, method: :post do %>
+                      <%= (render 'posts/like_button', post: post) if user_signed_in? %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>

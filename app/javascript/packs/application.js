@@ -11,6 +11,7 @@ require("/packs/jquery.raty")
 require("/packs/ratyrate")
 
 import 'bootstrap'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../stylesheets/application'
 
 document.addEventListener("turbolinks:load", $('[data-toggle="tooltip"]').tooltip())

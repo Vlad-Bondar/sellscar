@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'posts/user_cars',   to: 'posts#user_cars'
   resources :posts do
     resources :images, only: [:create , :destroy]
+    member do
+      post 'toggle_favorite', to: "posts#toggle_favorite"
+    end
   end
   root to: 'posts#index'
 end

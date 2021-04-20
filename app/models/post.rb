@@ -11,13 +11,13 @@ class Post < ApplicationRecord
   validates_associated :car
   validates_associated :comment
 
+  acts_as_favoritable
+  
   enum status: {
     archived: 0, 
     published: 1, 
     sold: 2
   }
-
-  ratyrate_rateable "rating"
 
   def sort_by_params(params,posts)
     case params

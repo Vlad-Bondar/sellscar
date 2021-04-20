@@ -11,7 +11,7 @@ gem 'pg', '~>1.2'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
-gem 'ratyrate'
+gem 'acts_as_favoritor'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

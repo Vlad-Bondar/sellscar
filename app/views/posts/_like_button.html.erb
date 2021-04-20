@@ -1,0 +1,9 @@
+<div class="like-icon mx-2 <%= 'red' if current_user.favorited?(post) %>" data-id="<%= post.id %>">
+  <i class="bi bi-heart-fill"></i>
+</div>
+
+<script>
+  $(bi bi-heart-fill).on("click",function (params) {
+    $.ajax
+  })
+</script>

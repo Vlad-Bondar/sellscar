@@ -5,6 +5,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :lockable, :recoverable, 
          :rememberable, :validatable, :confirmable, :omniauthable
-         
-  ratyrate_rater
+  
+  acts_as_favoritor
 end
