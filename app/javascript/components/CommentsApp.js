@@ -19,7 +19,7 @@ class CommentsApp extends React.Component {
       <div>
        <div id="comment_error"></div>
        <CommentForm csrf_token={this.props.csrf_token} onSubmit={this.handleSubmitComment} />
-       <Comments comments={this.state.comments} post_id={this.props.post_id} replies={this.state.replies} csrf_token={this.props.csrf_token} />
+       <Comments comments={this.state.comments} post_id={this.props.post_id} replies={this.state.replies} csrf_token={this.props.csrf_token} owner_name={this.props.owner_name} />
       </div>
     );
   }

@@ -58,7 +58,7 @@ class Comment extends React.Component {
       <div className="media mb-4">
         <img className="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="" />
         <div className="media-body">
-          <h5 className="mt-0">Commenter Name</h5>
+          <h5 className="mt-0">{this.props.owner_name}</h5>
           {this.props.comment.body}
           {repliesBox}
           <div id={"reply_error_" + this.props.comment.id}></div>

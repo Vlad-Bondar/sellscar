@@ -12,6 +12,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/posts/user_cars"><%= t('nav_bar.your_posts')%></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/user_favorites"><%= t('nav_bar.favorite_posts')%></a>
+      </li>
       <li class="nav-item<%= " active" if I18n.locale == :ru %>" >
         <%= link_to("Rus", url_for( locale: 'ru' ), class: "nav-link") %>
       </li>
@@ -43,6 +46,7 @@
                 <%= current_user.user_name%>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to t('common.new_post'), new_post_path , class: "dropdown-item"%>
               <%= link_to t('common.edit_profile'), edit_user_registration_path,  class: "dropdown-item"%>
               <%= link_to t('common.sign_out'), destroy_user_session_path, method: :delete , class: "dropdown-item"%>
             </div>

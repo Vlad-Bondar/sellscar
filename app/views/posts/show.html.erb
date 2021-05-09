@@ -4,7 +4,7 @@
     <div class="row">
 
         <!-- Post Content Column -->
-      <div class="col-lg-8">
+      <div class="col-lg-10">
 
         <!-- Title -->
         <h1 class="mt-2 mb-0"><%=@post.car.brand.title%></h1>
@@ -12,33 +12,26 @@
 
         <hr>
 
-
         <p>Posted on <%=@post.created_at%></p>
 
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-          <ol class="carousel-indicators">
-            <% @post.car.images.each_with_index do |image, index| %>
-              <li data-target='#MyCarousel' data-slide-to="#{index}" class="#{'active' if index == 0}"></li>
-            <% end %>
-          </ol>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <% @post.car.images.each_with_index do |image, index| %>
-              <div class="item <%= index == 0 ? 'active' : '' %>">
+           <% @car.images.each_with_index do |image, index| %>
+              <div class=<%="carousel-item" + (index == 0 ? "\u00A0active" : "" )%>>
                 <%= image_tag image.show_thumb.url, class: "d-block w-100" %>
               </div>
             <%end%>
           </div>
-          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="sr-only">Prev</span>
           </a>
-          <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="sr-only">Next</span>
           </a>
         </div>
 
-        
           <table class="table table-bordered mt-4">
             <tbody>
               <tr>
@@ -71,80 +64,25 @@
                 <th class="table-active"><%=t('activerecord.attributes.car.engine')%></th>
                 <td><%=@post.car.engine%></td>
               </tr>
+              <tr>
+                <th class="table-active"><%=t('activerecord.attributes.car.engine_volume')%>  </th>
+                <td><%=@post.car.engine_volume%></td>
+                <th class="table-active"><%=t('activerecord.attributes.car.type_of_fuel')%></th>
+                <td><%=@post.car.type_of_fuel%></td>
+              </tr>
             </tbody>
           </table>
           <hr>
-          <h3>11</h3>
-          <%= rating_for @post, 'rating' %>
           <h2> <%=t('activerecord.attributes.post.big_description')%> </h2>
           <!-- Post Content -->
           <p class="lead"><%=@post.big_description%></p>
 </form>
           <!-- Comment with nested comments -->
-        <%= react_component("CommentsApp", { comments: @comments, replies: @replies, csrf_token: form_authenticity_token, post_id: @post.id }) %>
+        <%= react_component("CommentsApp", { comments: @comments, replies: @replies, csrf_token: form_authenticity_token, post_id: @post.id, owner_name: @post.user.user_name}) %>
 
         </div>
 
         <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-append">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div>
-
-        </div>
 
       </div>
       <!-- /.row -->

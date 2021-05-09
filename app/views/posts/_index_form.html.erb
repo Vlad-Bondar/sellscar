@@ -22,7 +22,7 @@
           <%@posts.each do |post|%>
             <div class="col-lg-4 col-md-6 mb-4 rounded">
               <div class="card h-100 my-0">
-                <a href="/posts/<%= post.id%>"><%= image_tag(post.car.images.first.show_thumb.url, alt: 'Image' ,class:"rounded-top" ) if post.car.images? %></a>
+                <a href="/posts/<%= post.id%>"><%= image_tag(post.car.images.first.index_thumb.url, alt: 'Image' ,class:"rounded-top" ) if post.car.images? %></a>
                 <div class="card-body my-0 ">
                   <h4 class="card-title my-0 ">
                     <a href="/posts/<%= post.id%>"> <%= post.car.brand.title%> </a>
@@ -33,7 +33,7 @@
                 <% if path == "/posts/user_cars" %>
                   <div class="btn-group btn-group-sm mx-2 mb-2 " role="group">
                     <a href="<%= edit_post_path(post.id)%>" class="btn btn-secondary bg-light text-muted border border-white"> <%= t('common.edit') %> </a>
-                    <a href="#" class="btn btn-secondary bg-light text-muted border border-white"> <%= t('common.delete') %> </a>
+                    <%= link_to t('common.delete'), post ,class: "btn btn-secondary bg-light text-muted border border-white", method: :delete, data: { confirm: 'Are you sure?' }%>
                   </div>
                 <%end%>
                 <div class="card-footer">

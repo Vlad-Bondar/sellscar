@@ -2,15 +2,18 @@
 
 module ImagesService
   def add_more_images(new_images)
-    images = @post.images
+    
+    binding.pry
+    
+    images = @car.images
     images += new_images
-    @post.images = images
+    @car.images = images
   end
 
   def remove_image_at_index(index)
-    remain_images = @post.images
+    remain_images = @car.images
     deleted_image = remain_images.delete_at(index)
     deleted_image.try(:remove!)
-    @post.images = remain_images
+    @car.images = remain_images
   end
 end

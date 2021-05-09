@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_191153) do
+ActiveRecord::Schema.define(version: 2021_05_06_190952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2021_04_18_191153) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "car_models", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "brand_id"
+    t.integer "car_id"
+    t.index ["brand_id"], name: "index_car_models_on_brand_id"
+  end
+
   create_table "cars", force: :cascade do |t|
     t.string "drivetrain"
     t.string "location"
@@ -48,6 +57,10 @@ ActiveRecord::Schema.define(version: 2021_04_18_191153) do
     t.integer "post_id"
     t.integer "brand_id"
     t.string "images", default: [], array: true
+    t.integer "car_model_id"
+    t.string "type_of_fuel"
+    t.float "engine_volume"
+    t.integer "year_of_production"
   end
 
   create_table "comments", force: :cascade do |t|

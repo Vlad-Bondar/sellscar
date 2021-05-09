@@ -2,6 +2,7 @@ ru:
   nav_bar:
     all_posts: 'Все объявления'
     your_posts: 'Ваши объявления'
+    favorite_posts: 'Избранное'
   common:
     back: 'Назад'
     edit: 'Редактировать'
@@ -13,6 +14,7 @@ ru:
     search: 'Поиск'
     confirm: 'Вы уверены?'
     update: "Обновить"
+    create_post: "Создать объявление"
     sign_out: "Выйти"
     sign_in: "Войти"
     sign_up: "Регистрация"
