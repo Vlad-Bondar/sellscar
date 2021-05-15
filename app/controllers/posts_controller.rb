@@ -10,8 +10,8 @@ class PostsController < ApplicationController
   before_action :set_post , only: [:edit, :update, :show, :destroy]
   
   def index
-    @posts = Post.where(status: 1).includes(:car)
-    @posts = sort_by_params(params[:sort] , @posts)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
   def new
@@ -25,9 +25,6 @@ class PostsController < ApplicationController
     @car = @post.car
     @comments = Comment.comments_for_post(@post.id)
     @replies = Comment.replies_for_post(@post.id)
-    
-    binding.pry
-    
   end
 
   def edit

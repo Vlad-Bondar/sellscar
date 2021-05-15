@@ -7,7 +7,7 @@
       <div class="col-lg-10">
 
         <!-- Title -->
-        <h1 class="mt-2 mb-0"><%=@post.car.brand.title%></h1>
+        <h1 class="mt-2 mb-0"><%=@post.car.brand.title + " " +@post.car.car_model.title%> </h1>
         <h5 class="mb-4 mt-0"><%=@post.small_description%></h5>
 
         <hr>
@@ -78,7 +78,7 @@
           <p class="lead"><%=@post.big_description%></p>
 </form>
           <!-- Comment with nested comments -->
-        <%= react_component("CommentsApp", { comments: @comments, replies: @replies, csrf_token: form_authenticity_token, post_id: @post.id, owner_name: @post.user.user_name}) %>
+        <%= react_component("CommentsApp", { comments: @comments, replies: @replies, csrf_token: form_authenticity_token, post_id: @post.id}) %>
 
         </div>
 

@@ -1,0 +1,87 @@
+<%= search_form_for @q do |f| %>
+	<div class="container mt-6">
+		<div class="row mb-3">
+			<div class="col">
+				<%= f.select :car_brand_id_eq, options_for_select(Brand.all.map {|k,v| [k.title,k.id]}), { include_blank: '<--Brand-->' } ,class: "form-control"  %>
+			</div>
+			<div class="col">
+				<%= f.select :car_car_model_id_eq, options_for_select(CarModel.all.map {|k,v| [k.title,k.id]}), { include_blank: "<--Model-->" }, class: "form-control"  %>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-md-6">
+				<%= f.select :car_type_of_fuel_eq, options_for_select(Car.type_of_fuels.map {|k,v| [k,v]}), { include_blank: "<--Type of fuel-->" }, class: "form-control"  %>
+			</div>
+			<div class="col-md-6">
+				<%= f.select :car_body_style_eq, options_for_select(Car.body_styles.map {|k,v| [k,v]}), { include_blank: "<--Body style-->" }, class: "form-control"  %>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-md-6">
+				<%= f.select :car_drivetrain_eq, options_for_select(Car.drivetrains.map {|k,v| [k,v]}), { include_blank: "<--Drivetrain-->" }, class: "form-control"  %>
+			</div>
+			<div class="col-md-6">
+				<%= f.select :car_transmition_eq, options_for_select(Car.transmitions.map {|k,v| [k,v]}), { include_blank: "<--Gearbox-->" }, class: "form-control"  %>
+			</div>
+		</div>
+		<div class="row mb-1">	
+			<div class="col-md-1">
+				<%= f.label "Engine volume"%>
+			</div>
+			<div class="col-md-5">
+				<%= f.text_field :car_engine_volume_gteq, class: "form-control"%>
+			</div>
+			<div class="col-md-6">
+				<%= f.text_field :car_engine_volume_lteq, class: "form-control" %>
+			</div>
+		</div>
+		<div class="row mb-3">	
+			<div class="col-md-1">
+				<%= f.label "Year"%>
+			</div>
+			<div class="col-md-5">
+				<%= f.text_field :car_year_of_production_gteq, class: "form-control"%>
+			</div>
+			<div class="col-md-6">
+				<%= f.text_field :car_year_of_production_lteq, class: "form-control" %>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-1">
+				<%= f.label "Price"%>
+			</div>
+			<div class="col-md-5">
+				<%= f.text_field :car_price_gteq, class: "form-control" %>
+			</div>
+			<div class="col-md-6">
+				<%= f.text_field :car_price_lteq, class: "form-control" %>
+			</div>
+		</div>
+			<%= f.submit "Search", class: "btn btn-dark"%>
+		</div>
+	</div>
+<%end%>
+
+<script>
+	$('#q_car_brand_id_eq').on('change', function() {
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:3000/car_models/get_car_models_by_brand",
+			dataType: 'json',
+			data: { brand_id: this.value },
+			success: function(response){
+				add_column_to_select(response)
+			}
+		});
+	});
+
+	function add_column_to_select(response) {
+		$('#q_car_car_model_id_eq').find('option').remove()
+    $('#q_car_car_model_id_eq').append(new Option("<--Model-->",""))
+		response.data.forEach(function(item,i,arr){
+			value = item.id
+			text = item.attributes.title
+			$('#q_car_car_model_id_eq').append(new Option(text,value))
+		});
+	}
+</script>

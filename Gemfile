@@ -14,6 +14,8 @@ gem 'omniauth'
 gem 'acts_as_favoritor'
 gem 'jquery-rails'
 gem 'fast_jsonapi'
+gem 'ransack'
+gem 'activeadmin'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

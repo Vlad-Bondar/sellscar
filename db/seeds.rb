@@ -19,4 +19,4 @@
 
 # volvo.each { |elem| CarModel.create(title: elem, brands_id: 3) }
 
-# porsche.each { |elem| CarModel.create(title: elem, brands_id: 8) }
+# porsche.each { |elem| CarModel.create(title: elem, brands_id: 8) }AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

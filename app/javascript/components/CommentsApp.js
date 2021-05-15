@@ -19,14 +19,14 @@ class CommentsApp extends React.Component {
       <div>
        <div id="comment_error"></div>
        <CommentForm csrf_token={this.props.csrf_token} onSubmit={this.handleSubmitComment} />
-       <Comments comments={this.state.comments} post_id={this.props.post_id} replies={this.state.replies} csrf_token={this.props.csrf_token} owner_name={this.props.owner_name} />
+       <Comments comments={this.state.comments} post_id={this.props.post_id} replies={this.state.replies} csrf_token={this.props.csrf_token} />
       </div>
     );
   }
 
   handleSubmitComment(comment) {
     var comments = this.state.comments;
-  
+    console.log(comment)
     $.ajax({
       url: "http://localhost:3000/comments/create/" + this.props.post_id ,
       dataType: 'json',
