@@ -2,9 +2,6 @@
 
 module ImagesService
   def add_more_images(new_images)
-    
-    binding.pry
-    
     images = @car.images
     images += new_images
     @car.images = images

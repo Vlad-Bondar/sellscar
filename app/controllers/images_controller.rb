@@ -18,9 +18,6 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    
-    binding.pry
-    
     remove_image_at_index(params[:index].to_i)
     flash[:error] = 'Failed deleting image' unless @car.save
     redirect_back(fallback_location: root_path)
@@ -29,9 +26,6 @@ class ImagesController < ApplicationController
   private
 
   def set_cars_image
-    
-    binding.pry
-    
     @car = Car.find(params[:car_id])
   end
 

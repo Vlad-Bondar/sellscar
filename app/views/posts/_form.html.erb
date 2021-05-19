@@ -1,15 +1,35 @@
 <div class="mx-5">
+
+<% if @post.present? %>
+		<% @car.errors.each do |attr , msg| %>
+				<div class="alert alert-danger" role="alert">
+					
+					<%= attr %> <%= msg %>
+					
+				</div>
+		<% end %>
+		<% @post.errors.each do |attr , msg| %>
+				<%if msg != "is invalid"%>
+					<div class="alert alert-danger" role="alert">
+							<%= attr %> <%= msg %>
+					</div>
+				<%end%>
+		<% end %>
+<% end %> 
+
 	<%if !@car.new_record? && @car.images?%>
 		<%@car.images.each_with_index do |image, index|%>
 			<%=image_tag(image.index_thumb.url, alt: 'Image' , class:"mb-2" )%>
 			<%=link_to("Delete", car_image_destroy_path(@car.id, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" })%>
 		<%end%>
-<div style="margin-bottom: 15px">
-		<%= form_with model: @car, url: car_image_create_path(@car.id), method: :post  do |car|%>
-			<%= car.file_field :images, multiple: true %>
-			<%= car.submit "Update images"%>
-		<%end%>
-</div>
+	<%end%>
+	<%if !@car.new_record?%>
+		<div style="margin-bottom: 15px">
+				<%= form_with model: @car, url: car_image_create_path(@car.id), method: :post  do |car|%>
+					<%= car.file_field :images, multiple: true %>
+					<%= car.submit "Update images"%>
+				<%end%>
+		</div>
 	<%end%>
 <%= form_with model: @post, url: path, multiple: true, method: method do |post| %>
 	<%= fields_for :car, @car do |car| %>

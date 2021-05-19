@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'fast_jsonapi'
 gem 'ransack'
 gem 'activeadmin'
+gem 'cancancan'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

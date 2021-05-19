@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
   def edit
     @car = @post.car
+    authorize! :edit, @post && authorize! :edit, @car
   end
 
   def create
@@ -48,9 +49,6 @@ class PostsController < ApplicationController
 
   def update
     @car = @post.car
-    
-    binding.pry
-    
     if @car.update(car_params) &&  @post.update(post_params) 
       connect_brand_and_model(@car.brand, @car.car_model)
       redirect_to '/posts/' + @post.id.to_s
